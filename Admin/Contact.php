@@ -1,6 +1,6 @@
 <?php
-require('connection.php');
-require_once('functions.php');
+include 'connection.php';
+include 'functions.php';
 
 // Function to validate email address
 function validateEmail($email) {
@@ -24,14 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (!validateNumber($number) || !validateNumber($alt_number)) {
         echo '<script>alert("Number is Invalid! "); window.location = "Settings.php";</script>';
     } else {
-        // Insert data into the database
-        $sql = "INSERT INTO contact (Address, Number, Alt_Number, Email) VALUES (?, ?, ?, ?)";
+        // Update data in the database
+        $sql = "UPDATE contact SET Address = ?, Number = ?, Alt_Number = ?, Email = ? WHERE contact_id = 1";
         $stmt = $con->prepare($sql);
         $stmt->execute([$address, $number, $alt_number, $email]);
 
         // Redirect or show a success message
-        echo '<script>alert("Contact Information update! "); window.location = "Settings.php";</script>';
-        // You can redirect the user to a different page after successful insertion if needed.
-    }
+        echo '<script>alert("Contact Information updated! "); window.location = "Settings.php";</script>';
+        // You can redirect the user to a different page after a successful update if needed.
+    }else{
+                 echo "\nPDO::errorInfo():\n";
+                print_r($con->errorInfo());
+
+}
+
 }
 ?>
