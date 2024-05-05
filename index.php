@@ -923,38 +923,7 @@ if (isset($_POST['signup'])) {
     openLoginModal();
   }
 </script>
-<!-- <script>
-  // Function to open the login modal
-  function openLoginModal() {
-    var loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
-    loginModal.show();
-
-    // Set a cookie to indicate that the modal is open
-    document.cookie = "modalOpened=true";
-  }
-
-  // Function to close the login modal
-  function closeLoginModal() {
-    var loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
-    loginModal.hide();
-
-    // Delete the cookie to indicate that the modal is closed
-    document.cookie = "modalOpened=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-  }
-
-  // Check if the modal should be open on page load
-  function isModalOpen() {
-    return document.cookie.split(';').some(function(cookie) {
-      return cookie.trim().startsWith("modalOpened=");
-    });
-  }
-
-  if (isModalOpen()) {
-    openLoginModal();
-  }
-</script> -->
-
-
+  
 <?php
 // session_start();
 
